@@ -6,15 +6,15 @@ frame silks {
 	__0: vec @(-1mm, 2.5mm)
 	__2: vec .(pins*1.27mm+2mm, 0mm)
 	line __0 . l_width
-	__4: vec __2(-0.6mm, -1.3mm)
-	__5: vec __4(0.6mm, 0mm)
+	__4: vec .(-0.6mm, -1.3mm)
+	__5: vec .(0.6mm, 0mm)
 	line __2 . l_width
 	line __4 . l_width
 	__1: vec @(-1mm, -2.5mm)
 	line __0 . l_width
 	__3: vec .(pins*1.27mm+2mm, 0mm)
 	line __1 . l_width
-	__6: vec __3(-0.6mm, 1.3mm)
+	__6: vec .(-0.6mm, 1.3mm)
 	line __4 . l_width
 	__7: vec .(0.6mm, 0mm)
 	line . __3 l_width
@@ -58,4 +58,3 @@ loop n = 0, pins/2-1
 
 frame pads @
 frame silks @
-measx pads.__0 >> pads.__0 4.5mm
