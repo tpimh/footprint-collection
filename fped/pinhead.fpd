@@ -5,14 +5,15 @@ frame silks {
 
 	set offset = step/2
 
-	__0: vec @(-offset, -offset)
-	__1: vec __0(step*(n+1), 0mm)
-	line . __0 width
-	__2: vec @(-offset, offset)
-	line . __0 width
+	__4: vec @(-step*(pins-1)/2, 0mm)
+	__2: vec .(-offset, offset)
 	__3: vec .(step*(n+1), 0mm)
-	line . __1 width
 	line . __2 width
+	__0: vec __4(-offset, -offset)
+	line __2 . width
+	__1: vec .(step*(n+1), 0mm)
+	line . __0 width
+	line __3 . width
 }
 
 frame pads {
@@ -22,7 +23,7 @@ frame pads {
 
 	set pad_num = n+1
 
-	__0: vec @(n*step, 0mm)
+	__0: vec @(n*step-2.54mm*(pins-1)/2, 0mm)
 	__1: vec .(-hole_dia_x, hole_dia_y)
 	__2: vec .(-pad_dia_x+hole_dia_x, pad_dia_y-hole_dia_y)
 	__3: vec __0(hole_dia_x, -hole_dia_y)
