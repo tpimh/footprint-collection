@@ -1,0 +1,46 @@
+/* MACHINE-GENERATED ! */
+
+package "micromatch-smd-$pins"
+unit mm
+
+set value_top = n*2+1
+
+set value_bottom = (n+1)*2
+
+table
+    { pins }
+    { 4 }
+    { 6 }
+    { 8 }
+    { 10 }
+    { 12 }
+    { 14 }
+    { 16 }
+    { 18 }
+    { 20 }
+
+loop n = 0, pins/2-1
+
+__0: vec @(n*2.54mm, 0mm)
+__1: vec .(-0.75mm, 0.75mm)
+__2: vec .(1.5mm, 3mm)
+pad "$value_top" __1 .
+__3: vec __0(0.75mm, -0.75mm)
+__4: vec .(1.5mm, -3mm)
+pad "$value_bottom" . __3
+__5: vec @(-1.6mm, -2.5mm)
+__6: vec .(pins*1.27mm+2*1.6mm, 0mm)
+line __5 . 0.2mm
+__7: vec .(-0.8mm, 1mm)
+__8: vec .(0.8mm, 0mm)
+line . __6 0.2mm
+line __7 . 0.2mm
+__9: vec @(-1.6mm, 2.5mm)
+line . __5 0.2mm
+__10: vec .(pins*1.27mm+2*1.6mm, 0mm)
+line __9 . 0.2mm
+__11: vec .(-0.8mm, -1mm)
+line . __7 0.2mm
+__12: vec .(0.8mm, 0mm)
+line __11 . 0.2mm
+line __10 . 0.2mm
