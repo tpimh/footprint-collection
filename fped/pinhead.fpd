@@ -1,0 +1,44 @@
+/* MACHINE-GENERATED ! */
+
+frame silks {
+	set width = 0.2mm
+
+	set offset = step/2
+
+	__0: vec @(-offset, -offset)
+	__1: vec __0(step*(n+1), 0mm)
+	line . __0 width
+	__2: vec @(-offset, offset)
+	line . __0 width
+	__3: vec .(step*(n+1), 0mm)
+	line . __1 width
+	line . __2 width
+}
+
+frame pads {
+	table
+	    { hole_dia_x, hole_dia_y, pad_dia_x, pad_dia_y }
+	    { 0.5mm, hole_dia_x, 0.8mm, pad_dia_x }
+
+	set pad_num = n+1
+
+	__0: vec @(n*step, 0mm)
+	__1: vec .(-hole_dia_x, hole_dia_y)
+	__2: vec .(-pad_dia_x+hole_dia_x, pad_dia_y-hole_dia_y)
+	__3: vec __0(hole_dia_x, -hole_dia_y)
+	hole __1 .
+	__4: vec .(pad_dia_x-hole_dia_x, -pad_dia_y+hole_dia_y)
+	rpad "$pad_num" __2 .
+}
+
+package "pinhead-$step-$pins"
+unit mm
+
+set step = 2.54mm
+
+loop pins = 1, 64
+
+loop n = 0, pins-1
+
+frame pads @
+frame silks @
