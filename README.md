@@ -1,4 +1,4 @@
-kicad-cyb-mod
+KiCAD modules library by CYB3R
 =============
 
-My modules for KiCAD
+I'm planning to make my own module collection with blackjack and hookers. Everything is done in fped.
