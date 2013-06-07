@@ -3,14 +3,15 @@
 frame silks {
 	set l_width = 0.2mm
 
-	__0: vec @(-1mm, 2.5mm)
+	__8: vec @(-1.27mm*pins/2, 0mm)
+	__0: vec .(-1mm, 2.5mm)
 	__2: vec .(pins*1.27mm+2mm, 0mm)
 	line __0 . l_width
 	__4: vec .(-0.6mm, -1.3mm)
 	__5: vec .(0.6mm, 0mm)
 	line __2 . l_width
 	line __4 . l_width
-	__1: vec @(-1mm, -2.5mm)
+	__1: vec __8(-1mm, -2.5mm)
 	line __0 . l_width
 	__3: vec .(pins*1.27mm+2mm, 0mm)
 	line __1 . l_width
@@ -30,7 +31,8 @@ frame pads {
 
 	set pad_w = 1.5mm
 
-	__0: vec @(n*2.54mm, 0mm)
+	__5: vec @(-1.27mm*pins/2, 0mm)
+	__0: vec .(n*2.54mm, 0mm)
 	__1: vec .(-0.75mm, 0.75mm)
 	__2: vec .(pad_w, pad_l)
 	pad "$value_top" __1 .
