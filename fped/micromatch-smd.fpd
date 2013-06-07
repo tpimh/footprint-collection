@@ -1,11 +1,46 @@
 /* MACHINE-GENERATED ! */
 
+frame silks {
+	set l_width = 0.2mm
+
+	__0: vec @(-1mm, 2.5mm)
+	__2: vec .(pins*1.27mm+2mm, 0mm)
+	line __0 . l_width
+	__4: vec __2(-0.6mm, -1.3mm)
+	__5: vec __4(0.6mm, 0mm)
+	line __2 . l_width
+	line __4 . l_width
+	__1: vec @(-1mm, -2.5mm)
+	line __0 . l_width
+	__3: vec .(pins*1.27mm+2mm, 0mm)
+	line __1 . l_width
+	__6: vec __3(-0.6mm, 1.3mm)
+	line __4 . l_width
+	__7: vec .(0.6mm, 0mm)
+	line . __3 l_width
+	line __6 . l_width
+}
+
+frame pads {
+	set value_top = n*2+1
+
+	set value_bottom = (n+1)*2
+
+	set pad_l = 3mm
+
+	set pad_w = 1.5mm
+
+	__0: vec @(n*2.54mm, 0mm)
+	__1: vec .(-0.75mm, 0.75mm)
+	__2: vec .(pad_w, pad_l)
+	pad "$value_top" __1 .
+	__3: vec __0(0.75mm, -0.75mm)
+	__4: vec .(pad_w, -pad_l)
+	pad "$value_bottom" . __3
+}
+
 package "micromatch-smd-$pins"
 unit mm
-
-set value_top = n*2+1
-
-set value_bottom = (n+1)*2
 
 table
     { pins }
@@ -21,26 +56,6 @@ table
 
 loop n = 0, pins/2-1
 
-__0: vec @(n*2.54mm, 0mm)
-__1: vec .(-0.75mm, 0.75mm)
-__2: vec .(1.5mm, 3mm)
-pad "$value_top" __1 .
-__3: vec __0(0.75mm, -0.75mm)
-__4: vec .(1.5mm, -3mm)
-pad "$value_bottom" . __3
-__5: vec @(-1.6mm, -2.5mm)
-__6: vec .(pins*1.27mm+2*1.6mm, 0mm)
-line __5 . 0.2mm
-__7: vec .(-0.8mm, 1mm)
-__8: vec .(0.8mm, 0mm)
-line . __6 0.2mm
-line __7 . 0.2mm
-__9: vec @(-1.6mm, 2.5mm)
-line . __5 0.2mm
-__10: vec .(pins*1.27mm+2*1.6mm, 0mm)
-line __9 . 0.2mm
-__11: vec .(-0.8mm, -1mm)
-line . __7 0.2mm
-__12: vec .(0.8mm, 0mm)
-line __11 . 0.2mm
-line __10 . 0.2mm
+frame pads @
+frame silks @
+measx pads.__0 >> pads.__0 4.5mm
