@@ -1,31 +1,31 @@
 /* MACHINE-GENERATED ! */
 
 frame silks {
-	set l_width = 0.2mm
+	set width = 0.2mm
 
 	__8: vec @(-1.27mm*pins/2, 0mm)
 	__0: vec .(-1mm, 2.5mm)
 	__2: vec .(pins*1.27mm+2mm, 0mm)
-	line __0 . l_width
+	line __0 . width
 	__4: vec .(-0.6mm, -1.3mm)
 	__5: vec .(0.6mm, 0mm)
-	line __2 . l_width
-	line __4 . l_width
+	line __2 . width
+	line __4 . width
 	__1: vec __8(-1mm, -2.5mm)
-	line __0 . l_width
+	line __0 . width
 	__3: vec .(pins*1.27mm+2mm, 0mm)
-	line __1 . l_width
+	line __1 . width
 	__6: vec .(-0.6mm, 1.3mm)
-	line __4 . l_width
+	line __4 . width
 	__7: vec .(0.6mm, 0mm)
-	line . __3 l_width
-	line __6 . l_width
+	line . __3 width
+	line __6 . width
 }
 
 frame pads {
-	set value_top = n*2+1
+	set pad_num_top = n*2+1
 
-	set value_bottom = (n+1)*2
+	set pad_num_bot = (n+1)*2
 
 	set pad_l = 3mm
 
@@ -35,10 +35,10 @@ frame pads {
 	__0: vec .(n*2.54mm, 0mm)
 	__1: vec .(-0.75mm, 0.75mm)
 	__2: vec .(pad_w, pad_l)
-	pad "$value_top" __1 .
+	pad "$pad_num_top" __1 .
 	__3: vec __0(0.75mm, -0.75mm)
 	__4: vec .(pad_w, -pad_l)
-	pad "$value_bottom" . __3
+	pad "$pad_num_bot" . __3
 }
 
 package "micromatch-smd-$pins"
