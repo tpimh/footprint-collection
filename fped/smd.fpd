@@ -1,20 +1,56 @@
 /* MACHINE-GENERATED ! */
 
+frame silks {
+	set width = 0.2mm
+
+	set s_off = 0.2mm
+
+	__0: vec @(-L/2-s_off, -W/2-s_off)
+	__1: vec @(L/2+s_off, W/2+s_off)
+	__2: vec @(-L/2+b, W/2+s_off)
+	__3: vec @(L/2-b, W/2+s_off)
+	line __1 . width
+	__4: vec @(-L/2+b, -W/2-s_off)
+	line __0 . width
+	__5: vec @(L/2-b, -W/2-s_off)
+	__6: vec @(-L/2-s_off, W/2+s_off)
+	line __2 . width
+	line . __0 width
+	__7: vec @(L/2+s_off, -W/2-s_off)
+	line __5 . width
+	line __1 . width
+}
+
+frame pads {
+	set pad_l = b
+
+	set pad_w = W
+
+	__0: vec @(L/2, W/2)
+	__1: vec __0(-b, -W)
+	pad "2" . __0
+	__2: vec @(-L/2, -W/2)
+	__3: vec __2(b, W)
+	pad "1" . __2
+}
+
 package "$inches"
 unit mm
 
 table
-    { inches, W, L, b, off_a, off_b }
-    { "01005", 0.2mm, 0.4mm, 0.1mm, off/2, off*2 }
-    { "0201", 0.3mm, 0.6mm, 0.15mm, off/2, off*2 }
-    { "0402", 0.6mm, 1mm, 0.25mm, off, off*2 }
-    { "0603", 0.8mm, 1.6mm, 0.3mm, off, off }
-    { "0805", 1.25mm, 2mm, 0.4mm, off, off }
-    { "1206", 1.6mm, 3.2mm, 0.5mm, off*2, off }
-    { "1210", 2.5mm, 3.2mm, 0.5mm, off*2, off*2 }
-    { "1812", 3.2mm, 4.5mm, 0.5mm, off*2, off*2 }
-    { "2010", 2.5mm, 5mm, 0.6mm, off*2, off*2 }
-    { "2512", 3.2mm, 6.4mm, 0.6mm, off*2, off*2 }
+    { inches, W, L, b }
+    { "01005", 0.2mm, 0.4mm, 0.1mm }
+    { "0201", 0.3mm, 0.6mm, 0.15mm }
+    { "0402", 0.6mm, 1mm, 0.25mm }
+    { "0603", 0.8mm, 1.6mm, 0.3mm }
+    { "0805", 1.25mm, 2mm, 0.4mm }
+    { "1206", 1.6mm, 3.2mm, 0.5mm }
+    { "1210", 2.5mm, 3.2mm, 0.5mm }
+    { "1812", 3.2mm, 4.5mm, 0.5mm }
+    { "2010", 2.5mm, 5mm, 0.6mm }
+    { "2512", 3.2mm, 6.4mm, 0.6mm }
 
 set off = 0.1mm
 
+frame pads @
+frame silks @
