@@ -1,10 +1,14 @@
 #!/bin/bash
 
+#
+# Clean fped backups
+#
+
 if [ -d fped ]
 then
-   if ls fped/*~* &> /dev/null
+   if ls fped/*~*.fpd &> /dev/null
    then
-      rm fped/*~*
+      rm fped/*~*.fpd
       echo "all temp files deleted"
    else
       echo "nothing to clean"
