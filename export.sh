@@ -3,6 +3,7 @@
 # 
 # Export fped footprints to KiCAD
 # 
+# requires: which, ls, basename, fped (check), printf (check, optional)
 
 if [ ! -d fped ]
 then
@@ -22,14 +23,29 @@ then
    exit 1
 fi
 
+if ! which printf &> /dev/null
+then
+   fallbackecho="echo"
+   echo "printf not found in your PATH, using fallback"
+fi
+
 if [ ! -d kicad ]
 then
    mkdir kicad
 fi
 
+function indicate {
+   if [ "$fallbackecho" == "echo" ]
+   then
+      echo "${base}.fpd    ->    ${base}.mod"
+   else
+      printf "%20s.fpd    ->    %s.mod\n" "$base" "$base"
+   fi
+}
+
 for filename in fped/*.fpd
 do
    base=$(basename --suffix=".fpd" $filename)
    fped -k fped/${base}.fpd kicad/${base}.mod
-   echo "${base}.fpd -> ${base}.mod"
+   indicate $base
 done

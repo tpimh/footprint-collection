@@ -1,8 +1,9 @@
 #!/bin/bash
 
-#
+# 
 # Clean fped backups
-#
+# 
+# requires: ls, rm
 
 if [ -d fped ]
 then
