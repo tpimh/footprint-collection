@@ -9,8 +9,8 @@ if [ -d fped ]
 then
    if ls fped/*~*.fpd &> /dev/null
    then
-      rm fped/*~*.fpd
-      echo "all temp files deleted"
+      rm -v fped/*~*.fpd
+      echo "fped directory cleaned"
    else
       echo "nothing to clean"
    fi
