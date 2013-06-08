@@ -23,7 +23,7 @@ frame pads {
 
 	set pad_num = n+1
 
-	__0: vec @(n*step-2.54mm*(pins-1)/2, 0mm)
+	__0: vec @(n*step-step*(pins-1)/2, 0mm)
 	__1: vec .(-hole_dia_x, hole_dia_y)
 	__2: vec .(-pad_dia_x+hole_dia_x, pad_dia_y-hole_dia_y)
 	__3: vec __0(hole_dia_x, -hole_dia_y)
