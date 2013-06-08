@@ -22,7 +22,7 @@ frame silks {
 frame pads {
 	table
 	    { hole_dia_x, hole_dia_y, pad_dia_x, pad_dia_y }
-	    { 0.5mm, hole_dia_x, 0.8mm, pad_dia_x }
+	    { 0.5mm, hole_dia_x, 0.75mm, pad_dia_x }
 
 	set pad_num_top = n*2+1
 
@@ -48,7 +48,7 @@ frame pads {
 package "pinhead-double-$step-$double_pins"
 unit mm
 
-set step = 2.54mm
+set step = 2mm
 
 set double_pins = pins*2
 
