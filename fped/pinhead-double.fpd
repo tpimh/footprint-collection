@@ -52,7 +52,7 @@ table
 
 set double_pins = pins*2
 
-loop pins = 1, 32
+loop pins = 2, 32
 
 loop n = 0, pins-1
 

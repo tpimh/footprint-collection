@@ -45,7 +45,7 @@ frame pads {
 	__4: vec .(pad_dia_x-hole_dia_x, -pad_dia_y+hole_dia_y)
 	rpad "$pad_num_top" __5 .
 	__11: vec __0(-hole_dia_x, hole_dia_y)
-	__12: vec __11(-pad_dia_x+hole_dia_x, pad_dia_y-hole_dia_y)
+	__12: vec .(-pad_dia_x+hole_dia_x, pad_dia_y-hole_dia_y)
 	__13: vec __0(hole_dia_x, -hole_dia_y)
 	hole __11 .
 	__14: vec .(pad_dia_x-hole_dia_x, -pad_dia_y+hole_dia_y)
@@ -63,7 +63,7 @@ table
 
 set triple_pins = pins*3
 
-loop pins = 1, 27
+loop pins = 3, 27
 
 loop n = 0, pins-1
 
