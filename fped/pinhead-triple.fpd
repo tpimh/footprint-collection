@@ -1,0 +1,71 @@
+/* MACHINE-GENERATED ! */
+
+frame silks {
+	set width = 0.2mm
+
+	set offset = step/2
+
+	__4: vec @(-step*(pins-1)/2, 0mm)
+	__2: vec .(-offset, offset*3)
+	__3: vec .(step*(n+1), 0mm)
+	line . __2 width
+	__7: vec .(0mm, -offset*2)
+	__0: vec __4(-offset, -offset*3)
+	line __2 . width
+	__1: vec .(step*(n+1), 0mm)
+	line . __0 width
+	line __3 . width
+	__5: vec .(0mm, offset*2)
+	__6: vec __0(0mm, offset*2)
+	line . __5 width
+	__8: vec __2(0mm, -offset*2)
+	line . __7 width
+}
+
+frame pads {
+	set pad_num_top = (n+1)*3-2
+
+	set pad_num_mid = (n+1)*3-1
+
+	set pad_num_bot = (n+1)*3
+
+	__0: vec @(n*step-step*(pins-1)/2, 0mm)
+	__6: vec .(0mm, -step)
+	__7: vec .(hole_dia_x, -hole_dia_y)
+	__8: vec .(pad_dia_x-hole_dia_x, -pad_dia_y+hole_dia_y)
+	__9: vec __6(-hole_dia_x, hole_dia_y)
+	hole . __7
+	__10: vec .(-pad_dia_x+hole_dia_x, pad_dia_y-hole_dia_y)
+	rpad "$pad_num_bot" . __8
+	__2: vec __0(0mm, step)
+	__1: vec .(-hole_dia_x, hole_dia_y)
+	__5: vec .(-pad_dia_x+hole_dia_x, pad_dia_y-hole_dia_y)
+	__3: vec __2(hole_dia_x, -hole_dia_y)
+	hole __1 .
+	__4: vec .(pad_dia_x-hole_dia_x, -pad_dia_y+hole_dia_y)
+	rpad "$pad_num_top" __5 .
+	__11: vec __0(-hole_dia_x, hole_dia_y)
+	__12: vec __11(-pad_dia_x+hole_dia_x, pad_dia_y-hole_dia_y)
+	__13: vec __0(hole_dia_x, -hole_dia_y)
+	hole __11 .
+	__14: vec .(pad_dia_x-hole_dia_x, -pad_dia_y+hole_dia_y)
+	rpad "$pad_num_mid" __12 .
+}
+
+package "pinhead-triple-$step-$triple_pins"
+unit mm
+
+table
+    { step, hole_dia_x, hole_dia_y, pad_dia_x, pad_dia_y }
+    { 2.54mm, 0.5mm, hole_dia_x, 0.8mm, pad_dia_x }
+    { 2mm, 0.4mm, hole_dia_x, 0.65mm, pad_dia_x }
+    { 1.27mm, 0.3mm, hole_dia_x, 0.5mm, pad_dia_x }
+
+set triple_pins = pins*3
+
+loop pins = 1, 27
+
+loop n = 0, pins-1
+
+frame pads @
+frame silks @
