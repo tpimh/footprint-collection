@@ -1,0 +1,53 @@
+/* MACHINE-GENERATED ! */
+
+frame silks {
+	set width = 0.2mm
+
+	set s_off = 1mm
+
+	__0: vec @(-L/2-s_off, -W/2-s_off)
+	__1: vec @(L/2+s_off, W/2+s_off)
+	__2: vec @(-L/2+b, W/2+s_off)
+	__3: vec @(L/2-b, W/2+s_off)
+	line __1 . width
+	__4: vec @(-L/2+b, -W/2-s_off)
+	line __0 . width
+	__5: vec @(L/2-b, -W/2-s_off)
+	__6: vec @(-L/2-s_off, W/2+s_off)
+	line __2 . width
+	line . __0 width
+	__7: vec @(L/2+s_off, -W/2-s_off)
+	line __5 . width
+	line __1 . width
+}
+
+frame pads {
+	set pad_l = b
+
+	set pad_w = W
+
+	__0: vec @(L/2, W/2)
+	__1: vec .(-b, -W)
+	pad "2" . __0
+	__2: vec @(-L/2, -W/2)
+	__3: vec .(b, W)
+	pad "1" . __2
+}
+
+package "tantcap-$name"
+unit mm
+
+table
+    { name, W, L, G }
+    { "A", 1.1mm, 5.1mm, 0.8mm }
+    { "B", 1.8mm, 5.4mm, 1.1mm }
+    { "C", 1.8mm, 8mm, 2.5mm }
+    { "D", 2.7mm, 9.7mm, 3.8mm }
+    { "E", 4.4mm, 9.7mm, 3.8mm }
+
+set b = (L-G)/2
+
+set off = 0.1mm
+
+frame pads @
+frame silks @
