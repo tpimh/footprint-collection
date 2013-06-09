@@ -1,0 +1,52 @@
+/* MACHINE-GENERATED ! */
+
+frame silks {
+	set width = 0.2mm
+
+	set offset = step/2
+
+	__4: vec @(-step*(pins-1)/2, 0mm)
+	__2: vec .(-offset, offset*2)
+	__3: vec .(step*(n+1), 0mm)
+	line . __2 width
+	__0: vec __4(-offset, -offset*2)
+	line __2 . width
+	__1: vec .(step*(n+1), 0mm)
+	line . __0 width
+	line __3 . width
+	__5: vec .(0mm, offset*2)
+	__6: vec __0(0mm, offset*2)
+	line . __5 width
+}
+
+frame pads {
+	set pad_num_top = n*2+1
+
+	set pad_num_bot = (n+1)*2
+
+	__0: vec @(n*step-step*(pins-1)/2, 0mm)
+	__6: vec .(pad_w/2, -step/2)
+	__1: vec .(-pad_w, -pad_l)
+	pad "$pad_num_bot" __6 .
+	__2: vec __0(-pad_w/2, step/2)
+	__3: vec .(pad_w, pad_l)
+	pad "$pad_num_top" __2 .
+}
+
+package "pinhead-double-smd-$step-$double_pins"
+unit mm
+
+table
+    { step, pad_l, pad_w }
+    { 2.54mm, 3mm, 1.5mm }
+    { 2mm, 2mm, 1mm }
+    { 1.27mm, 1mm, 0.5mm }
+
+set double_pins = pins*2
+
+loop pins = 2, 32
+
+loop n = 0, pins-1
+
+frame pads @
+frame silks @
