@@ -3,7 +3,7 @@
 frame silks {
 	set width = 0.2mm
 
-	set s_off = 0.2mm
+	set s_off = 1/square*1mm*1mm*0.01mm+0.2mm
 
 	__0: vec @(-L/2-s_off, -W/2-s_off)
 	__1: vec @(L/2+s_off, W/2+s_off)
@@ -27,10 +27,10 @@ frame pads {
 	set pad_w = W
 
 	__0: vec @(L/2, W/2)
-	__1: vec __0(-b, -W)
+	__1: vec .(-b, -W)
 	pad "2" . __0
 	__2: vec @(-L/2, -W/2)
-	__3: vec __2(b, W)
+	__3: vec .(b, W)
 	pad "1" . __2
 }
 
@@ -50,7 +50,7 @@ table
     { "2010", 2.5mm, 5mm, 0.6mm }
     { "2512", 3.2mm, 6.4mm, 0.6mm }
 
-set off = 0.1mm
+set square = W*L
 
 frame pads @
 frame silks @
