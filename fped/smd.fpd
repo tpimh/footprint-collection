@@ -7,12 +7,12 @@ frame silks {
 
 	__0: vec @(-L/2-s_off, -W/2-s_off)
 	__1: vec @(L/2+s_off, W/2+s_off)
-	__2: vec @(-L/2+b, W/2+s_off)
-	__3: vec @(L/2-b, W/2+s_off)
+	__2: vec @(-L/2+b-0.1mm, W/2+s_off)
+	__3: vec @(L/2-b+0.1mm, W/2+s_off)
 	line __1 . width
-	__4: vec @(-L/2+b, -W/2-s_off)
+	__4: vec @(-L/2+b-0.1mm, -W/2-s_off)
 	line __0 . width
-	__5: vec @(L/2-b, -W/2-s_off)
+	__5: vec @(L/2-b+0.1mm, -W/2-s_off)
 	__6: vec @(-L/2-s_off, W/2+s_off)
 	line __2 . width
 	line . __0 width
@@ -26,11 +26,11 @@ frame pads {
 
 	set pad_w = W
 
-	__0: vec @(L/2, W/2)
-	__1: vec .(-b, -W)
+	__0: vec @(L/2+0.5*b*k, W*k/2)
+	__1: vec .(-b*1.5*k, -W*k)
 	pad "2" . __0
-	__2: vec @(-L/2, -W/2)
-	__3: vec .(b, W)
+	__2: vec @(-L/2-0.5*b*k, -W*k/2)
+	__3: vec .(b*1.5*k, W*k)
 	pad "1" . __2
 }
 
@@ -52,5 +52,8 @@ table
 
 set square = W*L
 
+set k = 1.2
+
 frame pads @
 frame silks @
+measx pads.__3 >> pads.__1
