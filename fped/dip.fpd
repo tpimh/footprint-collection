@@ -1,0 +1,66 @@
+/* MACHINE-GENERATED ! */
+
+frame silks {
+	set width = 0.2mm
+
+	set arc_dia = 0.8mm
+
+	__0: vec @(-step*half_pins/2, W/2)
+	__1: vec @(step*half_pins/2, W/2)
+	line __0 . width
+	__2: vec @(step*half_pins/2, -W/2)
+	line __1 . width
+	__3: vec @(-step*half_pins/2, -W/2)
+	line . __2 width
+	__5: vec @(-step*half_pins/2, -arc_dia)
+	line . __3 width
+	__6: vec @(-step*half_pins/2, arc_dia)
+	line . __0 width
+	__4: vec @(-step*half_pins/2+arc_dia, 0mm)
+	__7: vec .(-arc_dia, 0mm)
+	arc . __4 __6 width
+	arc . __5 __4 width
+}
+
+frame pads {
+	set pad_num_top = half_pins+n+1
+
+	set pad_num_bot = n+1
+
+	__0: vec @(n*step-step*(half_pins-1)/2, 0mm)
+	__6: vec .(0mm, -W/2)
+	__7: vec .(hole_dia_x, -hole_dia_y)
+	__8: vec .(pad_dia_x-hole_dia_x, -pad_dia_y+hole_dia_y)
+	__9: vec __6(-hole_dia_x, hole_dia_y)
+	hole . __7
+	__10: vec .(-pad_dia_x+hole_dia_x, pad_dia_y-hole_dia_y)
+	rpad "$pad_num_bot" . __8
+	__2: vec __0(0mm, W/2)
+	__1: vec .(-hole_dia_x, hole_dia_y)
+	__5: vec .(-pad_dia_x+hole_dia_x, pad_dia_y-hole_dia_y)
+	__3: vec __2(hole_dia_x, -hole_dia_y)
+	hole __1 .
+	__4: vec .(pad_dia_x-hole_dia_x, -pad_dia_y+hole_dia_y)
+	rpad "$pad_num_top" __5 .
+}
+
+package "dip-$pins"
+unit mm
+
+table
+    { step, hole_dia_x, hole_dia_y, pad_dia_x, pad_dia_y }
+    { 2.54mm, 0.5mm, hole_dia_x, 0.8mm, pad_dia_x }
+
+table
+    { half_pins, W }
+    { 2, 3*step }
+    { 3, 3*step }
+    { 4, 3*step }
+    { 14, 3*step }
+
+set pins = half_pins*2
+
+loop n = 0, half_pins-1
+
+frame pads @
+frame silks @
