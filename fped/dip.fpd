@@ -44,7 +44,7 @@ frame pads {
 	rpad "$pad_num_top" __5 .
 }
 
-package "dip-$pins"
+package "dip-$pins-($width_inches")"
 unit mm
 
 table
@@ -52,13 +52,24 @@ table
     { 2.54mm, 0.5mm, hole_dia_x, 0.8mm, pad_dia_x }
 
 table
-    { half_pins, W }
-    { 2, 3*step }
-    { 3, 3*step }
-    { 4, 3*step }
-    { 14, 3*step }
+    { half_pins, width_inches }
+    { 2, 0.3 }
+    { 3, 0.3 }
+    { 4, 0.3 }
+    { 7, 0.3 }
+    { 8, 0.3 }
+    { 9, 0.3 }
+    { 10, 0.3 }
+    { 11, 0.3 }
+    { 12, 0.3 }
+    { 14, 0.3 }
+    { 14, 0.6 }
+    { 20, 0.6 }
+    { 64, 0.6 }
 
 set pins = half_pins*2
+
+set W = width_inches*10*2.54mm
 
 loop n = 0, half_pins-1
 
