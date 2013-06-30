@@ -75,7 +75,7 @@ table
 
 set half_pins = pins/2
 
-set W = width_inches*10*2.54mm
+set W = width_inches*1000mil
 
 loop n = 0, half_pins-1
 
