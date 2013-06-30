@@ -56,4 +56,3 @@ set k = 1.2
 
 frame pads @
 frame silks @
-measx pads.__3 >> pads.__1
