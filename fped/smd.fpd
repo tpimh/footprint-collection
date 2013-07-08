@@ -5,18 +5,18 @@ frame silks {
 
 	set s_off = 1/square*1mm*1mm*0.01mm+0.2mm
 
-	__0: vec @(-L/2-s_off-0.5*b*k, -W*k/2-s_off)
-	__1: vec @(L/2+s_off+0.5*b*k, W*k/2+s_off)
+	__0: vec @(-L/2-s_off-0.5*b*k-0.2*L, -W*k/2-s_off)
+	__1: vec @(L/2+s_off+0.5*b*k+0.2*L, W*k/2+s_off)
 	__2: vec @(-L/2+b-0.1mm, W*k/2+s_off)
 	__3: vec @(L/2-b+0.1mm, W*k/2+s_off)
 	line __1 . width
 	__4: vec @(-L/2+b-0.1mm, -W*k/2-s_off)
 	line __0 . width
 	__5: vec @(L/2-b+0.1mm, -W*k/2-s_off)
-	__6: vec @(-L/2-s_off-0.5*b*k, W*k/2+s_off)
+	__6: vec @(-L/2-s_off-0.5*b*k-0.2*L, W*k/2+s_off)
 	line __2 . width
 	line . __0 width
-	__7: vec @(L/2+s_off+0.5*b*k, -W*k/2-s_off)
+	__7: vec @(L/2+s_off+0.5*b*k+0.2*L, -W*k/2-s_off)
 	line __5 . width
 	line __1 . width
 }
@@ -26,11 +26,11 @@ frame pads {
 
 	set pad_w = W
 
-	__0: vec @(L/2+0.5*b*k, W*k/2)
-	__1: vec .(-b*1.5*k, -W*k)
+	__0: vec @(L/2+0.5*b*k+0.2*L, W*k/2)
+	__1: vec .(-b*1.5*k-0.25*L, -W*k)
 	pad "2" . __0
-	__2: vec @(-L/2-0.5*b*k, -W*k/2)
-	__3: vec .(b*1.5*k, W*k)
+	__2: vec @(-L/2-0.5*b*k-0.2*L, -W*k/2)
+	__3: vec .(b*1.5*k+0.25*L, W*k)
 	pad "1" . __2
 }
 
