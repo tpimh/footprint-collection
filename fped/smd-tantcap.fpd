@@ -39,10 +39,11 @@ unit mm
 
 table
     { name, W, L, G }
-    { "A", 1.1mm, 5.1mm, 0.8mm }
-    { "B", 1.8mm, 5.4mm, 1.1mm }
-    { "C", 1.8mm, 8mm, 2.5mm }
-    { "D", 2.7mm, 9.7mm, 3.8mm }
+    { "R", 1.26mm, 4.3mm, 0.8mm }
+    { "A/S", 1.1mm, 5.1mm, 0.8mm }
+    { "B/T", 1.8mm, 5.4mm, 1.1mm }
+    { "C/U", 1.8mm, 8mm, 2.5mm }
+    { "D/V/X", 2.7mm, 9.7mm, 3.8mm }
     { "E", 4.4mm, 9.7mm, 3.8mm }
 
 set b = (L-G)/2
