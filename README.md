@@ -1,6 +1,6 @@
-# KiCAD modules library by CYB3R
+# My footprint collection
 
-I'm planning to make my own module collection with blackjack and hookers.
+I'm planning to make my own footprint collection with blackjack and hookers.
 
 Everything is done in [fped](https://github.com/bert/fped).
 
