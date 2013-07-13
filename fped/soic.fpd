@@ -1,0 +1,61 @@
+/* MACHINE-GENERATED ! */
+
+frame silks {
+	set width = 0.2mm
+
+	set arc_dia = 0.8mm
+
+	__0: vec @(-step*half_pins/2, W/2)
+	__1: vec @(step*half_pins/2, W/2)
+	line __0 . width
+	__2: vec @(step*half_pins/2, -W/2)
+	line __1 . width
+	__3: vec @(-step*half_pins/2, -W/2)
+	line . __2 width
+	__5: vec @(-step*half_pins/2, -arc_dia)
+	line . __3 width
+	__6: vec @(-step*half_pins/2, arc_dia)
+	line . __0 width
+	__4: vec @(-step*half_pins/2+arc_dia, 0mm)
+	__7: vec .(-arc_dia, 0mm)
+	arc . __4 __6 width
+	arc . __5 __4 width
+}
+
+frame pads {
+	set pad_num_top = half_pins+n+1
+
+	set pad_num_bot = n+1
+
+	set length = 1.5mm
+
+	__0: vec @(n*step-step*(half_pins-1)/2, 0mm)
+	__6: vec .(step/4, -W/2)
+	__1: vec .(-step/2, -length)
+	pad "$pad_num_bot" . __6
+	__2: vec __0(-step/4, W/2)
+	__3: vec .(step/2, length)
+	pad "$pad_num_top" __2 .
+}
+
+package "$name"
+unit mm
+
+table
+    { name, pins, width_inches }
+    { "so8-n", 8, 0.15 }
+    { "so8-w", 8, 0.2 }
+    { "so14-n", 14, 0.15 }
+    { "so16-n", 16, 0.15 }
+    { "so16-w", 16, 0.3 }
+
+set step = 1.27mm
+
+set half_pins = pins/2
+
+set W = width_inches*1000mil
+
+loop n = 0, half_pins-1
+
+frame pads @
+frame silks @
