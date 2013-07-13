@@ -1,0 +1,53 @@
+/* MACHINE-GENERATED ! */
+
+frame silks {
+	set width = 0.2mm
+
+	set offset = 0.2mm
+
+	__0: vec @(-pins/2*step-offset, offset)
+	__1: vec .(0mm, -offset*2)
+	line __0 . width
+	__2: vec @((pins-1)/2*step+offset, offset)
+	line . __0 width
+	__3: vec .(0mm, -offset*2)
+	line __2 . width
+}
+
+frame static_pads {
+	set shield_size = length/2
+
+	__1: vec @(-step*(pins+1)/2, -length)
+	__2: vec .(-shield_size, shield_size)
+	pad "shield" . __1
+	__3: vec @(step*pins/2, -length)
+	__4: vec .(shield_size, shield_size)
+	pad "shield" __3 .
+}
+
+frame pads {
+	set pad_num = n+1
+
+	loop n = 0, pins-1
+
+	__0: vec @(-step*pins/2, 0mm)
+	__1: vec .(step*n, 0mm)
+	__2: vec .(step/2, -length)
+	pad "$pad_num" __1 .
+}
+
+package "fpc-$pins-$step"
+unit mm
+
+table
+    { step }
+    { 0.25mm }
+    { 0.5mm }
+
+set length = 1mm
+
+loop pins = 4, 40
+
+frame pads @
+frame static_pads @
+frame silks @
