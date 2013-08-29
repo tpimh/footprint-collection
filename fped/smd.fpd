@@ -34,7 +34,7 @@ frame pads {
 	pad "1" . __2
 }
 
-package "$inches"
+package "size-$inches"
 unit mm
 
 table
