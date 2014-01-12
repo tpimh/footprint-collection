@@ -1,0 +1,56 @@
+/* MACHINE-GENERATED ! */
+
+frame silks {
+	set width = 0.2mm
+
+	set arc_dia = 0.8mm
+
+	__0: vec @(-step*half_pins/2, W/2)
+	__1: vec @(step*half_pins/2, W/2)
+	line __0 . width
+	__2: vec @(step*half_pins/2, -W/2)
+	line __1 . width
+	__3: vec @(-step*half_pins/2, -W/2)
+	line . __2 width
+	__5: vec @(-step*half_pins/2, -arc_dia)
+	line . __3 width
+	__6: vec @(-step*half_pins/2, arc_dia)
+	line . __0 width
+	__4: vec @(-step*half_pins/2+arc_dia, 0mm)
+	__7: vec .(-arc_dia, 0mm)
+	arc . __4 __6 width
+	arc . __5 __4 width
+}
+
+frame pads {
+	set pad_num_top = half_pins+n+1
+
+	set pad_num_bot = n+1
+
+	set length = 1.5mm
+
+	__0: vec @(n*step-step*(half_pins-1)/2, 0mm)
+	__6: vec .(step/4, -W/2)
+	__1: vec .(-step/2, -length)
+	pad "$pad_num_bot" . __6
+	__2: vec __0(-step/4, W/2)
+	__3: vec .(step/2, length)
+	pad "$pad_num_top" __2 .
+}
+
+package "tsop$pins"
+unit mm
+
+table
+    { pins, W, step }
+    { 32, 18.4mm, 0.5mm }
+    { 40, 18.4mm, 0.5mm }
+    { 48, 18.4mm, 0.5mm }
+    { 54, 10.15mm, 0.8mm }
+
+set half_pins = pins/2
+
+loop n = 0, half_pins-1
+
+frame pads @
+frame silks @
