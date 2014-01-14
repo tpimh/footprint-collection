@@ -3,23 +3,22 @@
 frame silks {
 	set width = 0.2mm
 
-	set arc_dia = 0.8mm
+	set arc_dia = 0.4mm
 
-	__0: vec @(-step*half_pins/2, W/2)
-	__1: vec @(step*half_pins/2, W/2)
+	__0: vec @(-step*half_pins/2, W/2-0.3mm)
+	__1: vec @(step*half_pins/2, W/2-0.3mm)
 	line __0 . width
-	__2: vec @(step*half_pins/2, -W/2)
+	__2: vec @(step*half_pins/2, -W/2+0.3mm)
 	line __1 . width
-	__3: vec @(-step*half_pins/2, -W/2)
+	__3: vec @(-step*half_pins/2, -W/2+0.3mm)
+	__4: vec .(step, 0mm)
 	line . __2 width
-	__5: vec @(-step*half_pins/2, -arc_dia)
-	line . __3 width
-	__6: vec @(-step*half_pins/2, arc_dia)
-	line . __0 width
-	__4: vec @(-step*half_pins/2+arc_dia, 0mm)
-	__7: vec .(-arc_dia, 0mm)
-	arc . __4 __6 width
-	arc . __5 __4 width
+	__5: vec __3(0mm, step)
+	line . __4 width
+	line __0 . width
+	__6: vec __3(step, step)
+	__7: vec .(arc_dia/2, arc_dia/2)
+	circ . __6 width
 }
 
 frame pads {
