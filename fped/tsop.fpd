@@ -23,7 +23,7 @@ frame silks {
 }
 
 frame pads {
-	set pad_num_top = half_pins+n+1
+	set pad_num_top = pins-n
 
 	set pad_num_bot = n+1
 
